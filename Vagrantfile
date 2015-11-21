@@ -8,7 +8,9 @@ Vagrant.configure(2) do |config|
 
   # You should have checked out the `adapter` repository from
   # https://www.github.com/webrtc/adapter
-  config.vm.synced_folder '../adapter', '/adapter'
+  if Dir.exist? '../adapter'
+    config.vm.synced_folder '../adapter', '/adapter'
+  end
 
   config.vm.provider 'virtualbox' do |vb|
     vb.memory = '2048'

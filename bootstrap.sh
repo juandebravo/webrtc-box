@@ -3,30 +3,46 @@
 # The output of all these installation steps is noisy.
 # With this utility the progress report is nice and concise.
 function install {
-    # if $# gt; 1
     echo installing $1
-    shift
+
+    # More than one argument means first argument is the
+    # friendly name, rest of arguments are the packages to
+    # be installed
+    if [ $# -gt '1' ]; then
+      shift
+    fi
+
     apt-get -y install "$@" >/dev/null 2>&1
 }
 
 echo 'Updating package information'
 apt-get -y update > /dev/null 2>&1
-install Git git-core
-install Gtk libgtk-3-0
-install Libnss3 libnss3
-install Libgconf libgconf-2-4
-install Libxss1 libxss1
-install Xvfb Xvfb
-install Libasound libasound2
 
-curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -  > /dev/null 2>&1
-install nodeJS nodejs
-install npm npm
+echo 'Installing required packages'
+install git-core
+install Gtk libgtk-3-0
+install libnss3
+install Libgconf libgconf-2-4
+install libxss1
+install Xvfb
+install libasound2
+
+echo 'Installing node'
+curl -sL https://deb.nodesource.com/setup_5.x | bash - > /dev/null 2>&1
+install nodejs > /dev/null 2>&1
+install npm > /dev/null 2>&1
+
+if [ ! -d '/adapter' ]; then
+  # Clone adapter repository if it does not exist yet
+  mkdir -p /adapter
+  git clone https://github.com/webrtc/adapter.git /adapter
+  chown -R vagrant:vagrant /adapter
+fi
 
 echo 'Installing adapter dependencies'
 cd /adapter
-npm install
-npm install jscs -g
+npm install > /dev/null 2>&1
+npm install jscs -g > /dev/null 2>&1
 
 echo 'Adapting bashrc file'
 cp /vagrant/bashrc /home/vagrant/.bashrc
