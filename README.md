@@ -1,5 +1,5 @@
 
-A Virtual Machine for WebRTC testing
+A Virtual Machine for WebRTC testing.
 
 ## Introduction
 
@@ -47,3 +47,6 @@ After the installation has finished, you can access the virtual machine with:
     vagrant@debian /adapter $   # pass  147
     vagrant@debian /adapter $   # ok
 
+## License
+
+Released under the MIT License, Copyright (c) 2015 – Juan de Bravo. See [the license file](LICENSE).
