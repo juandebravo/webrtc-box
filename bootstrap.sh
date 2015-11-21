@@ -15,7 +15,9 @@ install Git git-core
 install Gtk libgtk-3-0
 install Libnss3 libnss3
 install Libgconf libgconf-2-4
-install Java openjdk-7-jre
+install Libxss1 libxss1
+install Xvfb Xvfb
+install Libasound libasound2
 
 curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -  > /dev/null 2>&1
 install nodeJS nodejs
@@ -26,6 +28,8 @@ cd /adapter
 npm install
 npm install jscs -g
 
-sudo ln -s /usr/bin/nodejs /usr/bin/node
+echo 'Adapting bashrc file'
+cp /vagrant/bashrc /home/vagrant/.bashrc
+source ~/.bashrc
 
 echo 'Box ready for webRTC adapter development'
