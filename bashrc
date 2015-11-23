@@ -112,7 +112,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Kill Xvfb if running to ensure we own the terminal in the latest session
+# Kill Xvfb if running to ensure we own the DISPLAY in the latest session
 if pidof -o %PPID -x Xvfb >/dev/null; then
   echo "Killing previous Xvfb session. This new session owns the DISPLAY"
   kill -9 `pidof -o %PPID -x Xvfb`
