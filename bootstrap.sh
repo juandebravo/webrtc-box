@@ -29,8 +29,8 @@ install libasound2
 
 echo 'Installing node'
 curl -sL https://deb.nodesource.com/setup_5.x | bash - > /dev/null 2>&1
-install nodejs > /dev/null 2>&1
-install npm > /dev/null 2>&1
+install nodejs
+install npm
 
 if [ ! -d '/adapter' ]; then
   # Clone adapter repository if it does not exist yet
