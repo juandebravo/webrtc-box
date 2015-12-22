@@ -41,8 +41,8 @@ fi
 
 echo 'Installing adapter dependencies'
 cd /adapter
-npm install > /dev/null 2>&1
-npm install jscs -g > /dev/null 2>&1
+npm install
+npm install -g jscs
 
 echo 'Adapting bashrc file'
 cp /vagrant/bashrc /home/vagrant/.bashrc

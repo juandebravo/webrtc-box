@@ -118,5 +118,9 @@ if pidof -o %PPID -x Xvfb >/dev/null; then
   kill -9 `pidof -o %PPID -x Xvfb`
 fi
 
+# https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI
+# export DISPLAY=:99.0
+# sh -e /etc/init.d/xvfb start
+# sleep 3
 export DISPLAY=:10
 Xvfb :10 -screen 0 1366x768x24 -ac &
