@@ -44,6 +44,9 @@ cd /adapter
 npm install
 npm install -g jscs
 
+echo 'Adapting xvfd init file'
+cp /vagrant/xvfd /etc/init.d/xvfd
+
 echo 'Adapting bashrc file'
 cp /vagrant/bashrc /home/vagrant/.bashrc
 source ~/.bashrc

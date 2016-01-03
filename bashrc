@@ -112,15 +112,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Kill Xvfb if running to ensure we own the DISPLAY in the latest session
-if pidof -o %PPID -x Xvfb >/dev/null; then
-  echo "Killing previous Xvfb session. This new session owns the DISPLAY"
-  kill -9 `pidof -o %PPID -x Xvfb`
-fi
-
+# Using xvfb to run tests that require a GUI
+# Thanks Travis <3
 # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI
-# export DISPLAY=:99.0
-# sh -e /etc/init.d/xvfb start
-# sleep 3
-export DISPLAY=:10
-Xvfb :10 -screen 0 1366x768x24 -ac &
+export DISPLAY=:99.0
+sudo sh -e /etc/init.d/xvfb start
+sleep 2
