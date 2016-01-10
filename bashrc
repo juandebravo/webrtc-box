@@ -112,9 +112,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PATH=$PATH:/adapter/node_modules/chromedriver/bin
+
 # Using xvfb to run tests that require a GUI
 # Thanks Travis <3
 # https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI
 export DISPLAY=:99.0
-sudo sh -e /etc/init.d/xvfb start
+sudo sh -e /etc/init.d/xvfd start
 sleep 2

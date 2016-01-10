@@ -42,7 +42,10 @@ fi
 echo 'Installing adapter dependencies'
 cd /adapter
 npm install
-npm install -g jscs
+npm install grunt-cli@>=0.1.9
+npm install grunt-jscs@^2.0.0
+npm install travis-multirunner@^3.0.0
+npm install chromedriver@^2.16.0
 
 echo 'Adapting xvfd init file'
 cp /vagrant/xvfd /etc/init.d/xvfd
