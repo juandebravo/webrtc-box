@@ -21,6 +21,10 @@ As described in [adapter project](https://github.com/webrtc/adapter/tree/master/
 
 That's it.
 
+It might happen that you find out an issue while launching the box due to VirtualBox Guest Additions not being installed. If that's the case, please execute:
+
+    host $ ./install_vbox_guest_additions.sh
+
 ## What's In The Box
 
 * **Note**: You can choose either clone the [adapter](https://github.com/webrtc/adapter) at the same root folder as this repository or let the bootstrap script clone the repository for you. *adapter* repo will be available in */adapter* folder in the vagrant box.

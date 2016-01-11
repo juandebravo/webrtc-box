@@ -2,7 +2,10 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = 'debian/jessie64'
+  # This box does not include Guest Additions
+  # config.vm.box = 'debian/jessie64'
+  # Use this box to get Guest Additions 
+  config.vm.box = 'evidenceprime/jessie64'
 
   # config.vm.network "forwarded_port", guest: 80, host: 8080
 
