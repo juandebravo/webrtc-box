@@ -42,10 +42,34 @@ fi
 echo 'Installing adapter dependencies'
 cd /adapter
 npm install
+
+# Explicit installs to prevent some weirdness
+# while installing dependencies
 npm install grunt-cli@>=0.1.9
 npm install grunt-jscs@^2.0.0
 npm install travis-multirunner@^3.0.0
 npm install chromedriver@^2.16.0
+
+if [ ! -d '/samples' ]; then
+  # Clone samples repository if it does not exist yet
+  mkdir -p /samples
+  git clone https://github.com/webrtc/samples.git /samples
+  chown -R vagrant:vagrant /samples
+fi
+
+echo 'Installing samples dependencies'
+cd /samples
+
+# grunt-htmlhint must be installed explicitely to prevent a known issue
+# in some npm versions (like 3.6.0)
+# npm ERR! Error extracting .../grunt-htmlhint/0.9.9/package.tgz archive:
+# ENOENT: no such file or directory, open '.../grunt-htmlhint/0.9.9/package.tgz'
+# https://github.com/npm/npm/issues/10057
+npm install grunt-htmlhint@0.9.9
+# Explicit installs to prevent some weirdness
+# while installing dependencies
+npm install grunt@0.4.5
+npm install
 
 echo 'Adapting xvfd init file'
 cp /vagrant/xvfd /etc/init.d/xvfd
